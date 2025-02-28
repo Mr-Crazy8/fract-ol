@@ -1,0 +1,104 @@
+Zn = Zn-1 ^2 + c 
+
+c = a + bi
+c.real = a;
+c.imaginair = b
+z=x+yi
+
+Zn = Zn-1 ^2 + c
+Zn  = (x+yi)^2 + (a + bi)
+   = (x)^2 + 2xyi + (yi)^2 + (a + bi)
+   = x^2 - y^2 + 2xyi + (a + bi)
+
+   Zn   = x^2 - y^2 + a + (2xy + b)i
+       = 
+
+magnitude of a complex number
+
+
+zn+1​=zn2​+c
+
+c = is a complex number 
+representing a point on the complex plane (each pixel in the image is a different cc).
+
+
+
+
+
+for a number to be in mandelbrot set it must be close to where 
+it started and never grow to be super big or go to infinty
+
+
+
+(linear interpolation (LERP))
+The general formula for mapping a value vv from one range [a,b][a,b] to another range [c,d][c,d] is:
+
+v' = c + ((v - a)/(b - a)) * (d - c)
+
+
+
+    //a = minReal + (x / screenWidth) × (maxReal - minReal)
+    //b = minImag + (y / screenHeight) × (maxImag - minImag)
+    //minReal = -2;
+    //maxReal = 2;
+    //minImag = -2;
+    //maxImag = 2;
+
+
+
+
+    a = center_x + (x - 400) × (4.0 / 800) × zoom
+    float xn = -2 +((float)x/800.0)*(4);
+
+
+
+
+
+
+
+
+
+
+    int color_finder(int i, int max_iter)
+{
+    if (i == max_iter)
+        return 0x000000;
+    return i * 0x000508; // Creates purple-blue gradient
+}
+
+0x000508 = 1288
+if i
+
+i = 1
+1 * 0x000508 = 0x000508 
+2 * 0x000508 = 2576 = 0x000A10
+3 *            = 3864 = 0x000F18
+4 *             = 5152 = 0x001420
+5 *             = 6440 = 0x001928
+6 *                = 7728 = 0x001E30
+7 *                 = 9016 = 0x002338
+8 *                 = 10304 = 0x002840
+9 *                =  11592 = 0x002D48
+10 *                = 12880 = 0x003250
+11                 =   14168 = 0x003758
+20 *             =   25760 = 0x0064A0
+30 *            = 38640 = 0x0096F0
+
+99*             = 127512 = 0x01F218
+
+
+
+
+                      -2     
+    --------------------------------------
+    |                  |                 |
+    |                  |                 |
+    |                  |                 |  
+    |                  |                 |
+  -2|__________________|_________________|2
+    |                  |                 |
+    |                  |                 |
+    |                  |                 |
+    |                  |                 |
+    --------------------------------------
+                      2
