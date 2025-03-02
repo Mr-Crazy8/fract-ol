@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 14:54:57 by anel-men          #+#    #+#             */
-/*   Updated: 2025/03/01 15:06:17 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/03/01 18:16:14 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,11 @@ void	print_error(void)
 	exit(1);
 }
 
-int	is_valid_number(char *str)
+int	is_valid_number(char *str, int j, int count)
 {
-	int	j;
-	int	count;
-
-	j = 0;
-	count = 0;
 	if (str[j] == '-' || str[j] == '+')
 		j++;
-	if (str[j] == '.' || str[j] == '\0')
+	if ((str[j] == '.' || str[j] == '\0'))
 		return (0);
 	while (str[j])
 	{
@@ -43,6 +38,8 @@ int	is_valid_number(char *str)
 			if (count > 1)
 				return (0);
 		}
+		else if ((str[j] == '.' && str[j + 1] == '\0'))
+			return (0);
 		else
 			return (0);
 	}
@@ -52,11 +49,15 @@ int	is_valid_number(char *str)
 void	check_dotes(char *argv[])
 {
 	int	i;
+	int	j;
+	int	count;
 
 	i = 2;
+	j = 0;
+	count = 0;
 	while (argv[i])
 	{
-		if (!is_valid_number(argv[i]))
+		if (!is_valid_number(argv[i], j, count))
 			print_error();
 		i++;
 	}
