@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 14:54:41 by anel-men          #+#    #+#             */
-/*   Updated: 2025/03/01 14:54:42 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/03/03 13:54:17 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ double	ft_atof(const char *str)
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-	if (str[i++] == '.')
+	if (str[i] == '.')
 	{
+		i++;
 		while (str[i] >= '0' && str[i] <= '9')
 		{
 			result += (str[i] - '0') * decimal_place;

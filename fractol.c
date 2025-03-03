@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 14:54:57 by anel-men          #+#    #+#             */
-/*   Updated: 2025/03/01 18:16:14 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/03/03 14:07:36 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ void	print_error(void)
 	exit(1);
 }
 
-int	is_valid_number(char *str, int j, int count)
+int	is_valid_number(char *str, int j)
 {
+	int count;
+	
+	count = 0;
 	if (str[j] == '-' || str[j] == '+')
 		j++;
 	if ((str[j] == '.' || str[j] == '\0'))
@@ -50,14 +53,14 @@ void	check_dotes(char *argv[])
 {
 	int	i;
 	int	j;
-	int	count;
+	// int	count;
 
 	i = 2;
 	j = 0;
-	count = 0;
+	// count = 0;
 	while (argv[i])
 	{
-		if (!is_valid_number(argv[i], j, count))
+		if (!is_valid_number(argv[i], j))
 			print_error();
 		i++;
 	}

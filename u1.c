@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 14:55:09 by anel-men          #+#    #+#             */
-/*   Updated: 2025/03/03 13:17:32 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/03/03 14:02:02 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	ft_strcmp(char *s1, char *s2)
 	int	i;
 
 	i = 0;
+	if (!s1 || !s2)
+		return (-1);
 	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
 		i++;
 	return (s1[i] - s2[i]);
@@ -82,7 +84,7 @@ void	init_mlx(char *argv[], int argc)
 		exit(1);
 	fractol.img = mlx_new_image(fractol.mlx, 800, 800);
 	if (!fractol.img)
-		(mlx_destroy_image(fractol.mlx, fractol.img), exit(1));
+		(mlx_destroy_window(fractol.mlx, fractol.win), exit(1));
 	fractol.add = mlx_get_data_addr(fractol.img, &fractol.bits_per_pixel,
 			&fractol.size_line, &fractol.endian);
 	fractol.zoom = 1.0;
