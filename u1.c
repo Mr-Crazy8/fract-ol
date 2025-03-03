@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 14:55:09 by anel-men          #+#    #+#             */
-/*   Updated: 2025/03/01 15:25:19 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/03/03 13:17:32 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,14 @@ void	init_mlx(char *argv[], int argc)
 
 	fractol.fracto_name = argv[1];
 	fractol.mlx = mlx_init();
+	if (!fractol.mlx)
+		exit(1);
 	fractol.win = mlx_new_window(fractol.mlx, 800, 800, fractol.fracto_name);
+	if (!fractol.win)
+		exit(1);
 	fractol.img = mlx_new_image(fractol.mlx, 800, 800);
+	if (!fractol.img)
+		(mlx_destroy_image(fractol.mlx, fractol.img), exit(1));
 	fractol.add = mlx_get_data_addr(fractol.img, &fractol.bits_per_pixel,
 			&fractol.size_line, &fractol.endian);
 	fractol.zoom = 1.0;
@@ -88,10 +94,6 @@ void	init_mlx(char *argv[], int argc)
 		fractol.xn = ft_atof(argv[2]);
 		fractol.yn = ft_atof(argv[3]);
 	}
-	redraw_fractal(&fractol);
-	mlx_put_image_to_window(fractol.mlx, fractol.win, fractol.img, 0, 0);
-	mlx_key_hook(fractol.win, close_wind, &fractol);
-	mlx_mouse_hook(fractol.win, zoom_in, &fractol);
-	mlx_hook(fractol.win, 17, 0, close_wind_x, &fractol);
+	help_mlx(&fractol);
 	mlx_loop(fractol.mlx);
 }

@@ -6,11 +6,20 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 14:55:57 by anel-men          #+#    #+#             */
-/*   Updated: 2025/03/01 14:55:58 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/03/03 13:17:36 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	help_mlx(t_fract *fractol)
+{
+	redraw_fractal(fractol);
+	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img, 0, 0);
+	mlx_key_hook(fractol->win, close_wind, fractol);
+	mlx_mouse_hook(fractol->win, zoom_in, fractol);
+	mlx_hook(fractol->win, 17, 0, close_wind_x, fractol);
+}
 
 int	close_wind_x(t_fract *fractol)
 {
