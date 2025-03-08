@@ -6,18 +6,11 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 14:55:09 by anel-men          #+#    #+#             */
-/*   Updated: 2025/03/03 14:02:02 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:22:55 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int	color_finder(int i, int max_iter)
-{
-	if (i == max_iter)
-		return (0x000000);
-	return (i * 0x00040E);
-}
 
 void	redraw_fractal(t_fract *fractol)
 {
@@ -71,6 +64,19 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
+static void	initialisations(t_fract *fractol, int argc, char *argv[])
+{
+	fractol->zoom = 1.0;
+	fractol->max_iter = 200;
+	fractol->zx = 0.0;
+	fractol->zy = 0.0;
+	if (argc == 4 && (ft_strcmp(fractol->fracto_name, "julia") == 0))
+	{
+		fractol->xn = ft_atof(argv[2]);
+		fractol->yn = ft_atof(argv[3]);
+	}
+}
+
 void	init_mlx(char *argv[], int argc)
 {
 	t_fract	fractol;
@@ -87,15 +93,12 @@ void	init_mlx(char *argv[], int argc)
 		(mlx_destroy_window(fractol.mlx, fractol.win), exit(1));
 	fractol.add = mlx_get_data_addr(fractol.img, &fractol.bits_per_pixel,
 			&fractol.size_line, &fractol.endian);
-	fractol.zoom = 1.0;
-	fractol.max_iter = 200;
-	fractol.zx = 0.0;
-	fractol.zy = 0.0;
-	if (argc == 4 && (ft_strcmp(argv[1], "julia") == 0))
+	if (!fractol.add)
 	{
-		fractol.xn = ft_atof(argv[2]);
-		fractol.yn = ft_atof(argv[3]);
+		mlx_destroy_image(fractol.mlx, fractol.img);
+		(mlx_destroy_window(fractol.mlx, fractol.win), exit(1));
 	}
+	initialisations(&fractol, argc, argv);
 	help_mlx(&fractol);
 	mlx_loop(fractol.mlx);
 }

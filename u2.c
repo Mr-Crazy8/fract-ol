@@ -6,11 +6,18 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 14:54:41 by anel-men          #+#    #+#             */
-/*   Updated: 2025/03/03 13:54:17 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:21:32 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	color_finder(int i, int max_iter)
+{
+	if (i == max_iter)
+		return (0x000000);
+	return (i * 0x00040E);
+}
 
 static int	skip_whitespace_and_sign(const char *str, int *sign)
 {
